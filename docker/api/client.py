@@ -1,6 +1,7 @@
 import json
 import struct
 import urllib
+import traceback
 from functools import partial
 
 import requests
@@ -213,7 +214,7 @@ class APIClient(
         try:
             coisas = self.version(api_version=False)
             print(f"---- Resultado de self.version {coisas}")
-            print(f"---- APIVersion {coisas.get('ApiVersion')}")
+            print(f"---- APIVersion {coisas['ApiVersion']}")
             return coisas["ApiVersion"]
         except KeyError:
             raise DockerException(
@@ -221,6 +222,7 @@ class APIClient(
                 ' is missing.'
             )
         except Exception as e:
+            traceback.print_exc()
             raise DockerException(
                 f'Error while fetching server API version: {e}'
             )
