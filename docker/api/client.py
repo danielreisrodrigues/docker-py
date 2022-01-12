@@ -211,7 +211,9 @@ class APIClient(
 
     def _retrieve_server_version(self):
         try:
-            return self.version(api_version=False)["ApiVersion"]
+            coisas = self.version(api_version=False)
+            print(coisas)
+            return coisas["ApiVersion"]
         except KeyError:
             raise DockerException(
                 'Invalid response from docker daemon: key "ApiVersion"'
