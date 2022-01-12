@@ -213,6 +213,7 @@ class APIClient(
         try:
             coisas = self.version(api_version=False)
             print(f"---- Resultado de self.version {coisas}")
+            print(f"---- APIVersion {coisas.get('ApiVersion')}")
             return coisas["ApiVersion"]
         except KeyError:
             raise DockerException(
