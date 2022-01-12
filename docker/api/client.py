@@ -239,6 +239,7 @@ class APIClient(
 
     @update_headers
     def _get(self, url, **kwargs):
+        print(f"--- URL: {url}")
         return self.get(url, **self._set_request_timeout(kwargs))
 
     @update_headers
