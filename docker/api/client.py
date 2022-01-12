@@ -222,6 +222,7 @@ class APIClient(
                 ' is missing.'
             )
         except Exception as e:
+            print(e.__traceback__())
             traceback.print_exc()
             raise DockerException(
                 f'Error while fetching server API version: {e}'
